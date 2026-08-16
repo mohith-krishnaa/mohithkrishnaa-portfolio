@@ -3,54 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohith Krishnaa | Automation & Tooling Developer</title>
-<meta name="description" content="Automation and tooling developer building backend-powered utilities, bots and automation systems using Python and Flask.">
+<meta name="theme-color" content="#070907">
+<meta name="description" content="Mohith Krishnaa — Computer Science & Data Science student building software, automation, AI applications and developer tools.">
+<title>Mohith Krishnaa — Builder / Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-body { font-family: 'Inter', sans-serif; }
-.section { padding: 100px 20px; }
-.container { max-width: 1100px; margin: auto; }
-.card { border: 1px solid #e5e7eb; transition: all 0.2s ease; }
-.card:hover { border-color: #111; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transform: translateY(-4px); }
-.gradient-accent { background: linear-gradient(90deg, #111 0%, #444 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+:root{--bg:#070907;--panel:#0d120e;--panel-2:#111811;--text:#f1f3ed;--muted:#9aa59a;--line:rgba(231,239,229,.11);--accent:#c7f36b;--accent-2:#78d69a;--max:1180px;--radius:24px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+::selection{background:var(--accent);color:#071006}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 75%);z-index:-3}
+.glow{position:fixed;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(199,243,107,.07),transparent 65%);transform:translate(-50%,-50%);pointer-events:none;z-index:-2;transition:left .18s ease,top .18s ease}
+.container{width:min(calc(100% - 40px),var(--max));margin:auto}
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:min(calc(100% - 28px),900px);z-index:20;border:1px solid var(--line);background:rgba(7,9,7,.72);backdrop-filter:blur(18px);border-radius:999px;padding:9px 10px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:"Space Grotesk",sans-serif;font-weight:700;padding:9px 14px;letter-spacing:-.04em}.brand span{color:var(--accent)}
+.navlinks{display:flex;gap:4px}.navlinks a{padding:8px 13px;border-radius:999px;color:var(--muted);font-size:13px}.navlinks a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.menu{display:none;background:none;border:0;color:var(--text);font-size:24px;padding:4px 12px}
+.hero{min-height:100vh;display:flex;align-items:center;padding:150px 0 90px;position:relative}.hero:after{content:"";position:absolute;width:55vw;height:55vw;max-width:700px;max-height:700px;right:-20%;top:5%;background:radial-gradient(circle,rgba(120,214,154,.09),transparent 68%);z-index:-1}
+.eyebrow{font-family:"DM Mono",monospace;color:var(--accent);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px}
+h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(4rem,10vw,8.8rem);line-height:.86;letter-spacing:-.075em;max-width:950px}
+h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1px rgba(241,243,237,.55)}
+.hero-copy{max-width:650px;margin-top:30px;color:var(--muted);font-size:clamp(17px,2vw,21px)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}.btn{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);padding:13px 18px;border-radius:999px;font-weight:700;font-size:14px;transition:transform .25s ease,border-color .25s ease,background .25s ease}.btn:hover{transform:translateY(-3px);border-color:rgba(199,243,107,.5)}.btn.primary{background:var(--accent);color:#0a1009;border-color:var(--accent)}
+.hero-meta{margin-top:75px;display:flex;gap:28px;flex-wrap:wrap;color:var(--muted);font-family:"DM Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em}.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px}
+section{padding:110px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:42px}.kicker{font-family:"DM Mono",monospace;font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.13em;margin-bottom:10px}.section-title{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.2rem,5vw,4.4rem);line-height:.95;letter-spacing:-.055em}.section-note{max-width:360px;color:var(--muted);font-size:14px}
+.feature{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,rgba(199,243,107,.08),rgba(17,24,17,.35));display:grid;grid-template-columns:1.05fr .95fr;min-height:440px;transition:transform .4s ease,border-color .4s ease}.feature:hover{transform:translateY(-5px);border-color:rgba(199,243,107,.28)}
+.feature-copy{padding:48px;display:flex;flex-direction:column;justify-content:space-between}.number{font-family:"DM Mono",monospace;color:var(--muted);font-size:12px}.feature h3{font-family:"Space Grotesk";font-size:clamp(2.4rem,5vw,5rem);letter-spacing:-.06em;line-height:.9;margin:30px 0 20px}.feature p{color:var(--muted);max-width:560px}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:25px}.tag{font-family:"DM Mono",monospace;font-size:10px;border:1px solid var(--line);padding:6px 9px;border-radius:999px;color:#b7c1b6}.feature-links{display:flex;gap:12px;margin-top:30px}
+.feature-visual{min-height:440px;background:radial-gradient(circle at 55% 45%,rgba(199,243,107,.14),transparent 24%),linear-gradient(145deg,#111a12,#080b08);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.mock{width:74%;aspect-ratio:1/1.15;border:1px solid rgba(199,243,107,.2);border-radius:20px;background:#0d140e;box-shadow:0 30px 90px rgba(0,0,0,.5);padding:18px;transform:rotate(4deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}.feature:hover .mock{transform:rotate(0) translateY(-8px)}.mock-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.mock-logo{font-family:"Space Grotesk";font-size:17px;font-weight:700}.mock-logo b{color:var(--accent)}.pill{height:22px;width:72px;border-radius:20px;background:#172418}.mock-card{border:1px solid rgba(255,255,255,.08);background:#121c13;border-radius:14px;padding:18px;margin-bottom:10px}.mock-card strong{display:block;color:var(--accent);font-size:26px;font-family:"Space Grotesk"}.mock-line{height:7px;border-radius:8px;background:#263329;margin-top:9px}.mock-line.short{width:58%}.chart{height:105px;position:relative;overflow:hidden}.chart:before{content:"";position:absolute;inset:35px 0 0;background:linear-gradient(155deg,transparent 10%,#69c991 11%,#69c991 12%,transparent 13%,transparent 29%,#69c991 30%,#69c991 31%,transparent 32%,transparent 49%,#69c991 50%,#69c991 51%,transparent 52%,transparent 68%,#69c991 69%,#69c991 70%,transparent 71%);opacity:.8}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.project{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:28px;min-height:245px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s ease,border-color .3s ease,background .3s ease}.project:hover{transform:translateY(-7px);border-color:rgba(199,243,107,.24);background:var(--panel-2)}.project-top{display:flex;justify-content:space-between;gap:15px}.project-num{font-family:"DM Mono";color:#667066;font-size:11px}.project h4{font-family:"Space Grotesk";font-size:25px;letter-spacing:-.035em;margin:28px 0 9px}.project p{color:var(--muted);font-size:14px}.project-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:25px}.project-stack{font-family:"DM Mono";font-size:10px;color:#778177}.arrow{color:var(--accent);font-size:18px;transition:transform .25s ease}.project:hover .arrow{transform:translate(4px,-4px)}
+.bots{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.bot{border:1px solid var(--line);padding:30px;border-radius:20px;background:linear-gradient(135deg,#101710,#0a0d0a)}.bot h4{font-family:"Space Grotesk";font-size:28px;margin:20px 0 8px}.bot p{color:var(--muted);font-size:14px}.bot a{display:inline-flex;margin-top:22px;color:var(--accent);font-size:13px;font-weight:700}
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;border-top:1px solid var(--line)}.about-copy{font-size:clamp(22px,3vw,38px);font-family:"Space Grotesk";letter-spacing:-.04em;line-height:1.15}.about-copy span{color:var(--muted)}.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}.skill-group h4{font-family:"DM Mono";font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}.skill-group p{color:var(--muted);font-size:14px}
+.contact{border:1px solid var(--line);border-radius:var(--radius);padding:55px;background:linear-gradient(135deg,rgba(199,243,107,.08),rgba(255,255,255,.015));display:flex;align-items:end;justify-content:space-between;gap:40px}.contact h2{font-family:"Space Grotesk";font-size:clamp(3rem,7vw,7rem);letter-spacing:-.07em;line-height:.85}.contact p{color:var(--muted);max-width:400px;margin-top:20px}.contact-links{display:flex;flex-direction:column;gap:10px;min-width:190px}.contact-links a{padding:12px 0;border-bottom:1px solid var(--line);font-family:"DM Mono";font-size:12px;color:var(--muted)}.contact-links a:hover{color:var(--accent)}
+footer{padding:35px 0 50px;color:#697169;font-family:"DM Mono";font-size:10px;display:flex;justify-content:space-between;gap:20px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}.reveal.visible{opacity:1;transform:none}.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+@media(max-width:800px){.container{width:min(calc(100% - 28px),var(--max))}.nav{top:10px;width:calc(100% - 20px)}.navlinks{display:none}.menu{display:block}.nav.open .navlinks{display:flex;position:absolute;top:55px;left:0;right:0;padding:10px;background:rgba(7,9,7,.96);border:1px solid var(--line);border-radius:18px;flex-direction:column}.nav.open .navlinks a{padding:12px}.hero{padding-top:150px}.hero-meta{margin-top:55px}.feature{grid-template-columns:1fr}.feature-visual{min-height:360px}.feature-copy{padding:30px}.grid,.bots{grid-template-columns:1fr}.about{grid-template-columns:1fr;gap:40px}.skills{grid-template-columns:1fr 1fr}.contact{padding:32px;flex-direction:column;align-items:flex-start}.contact-links{width:100%}}
+@media(max-width:480px){h1{font-size:clamp(3.5rem,18vw,5.2rem)}section{padding:80px 0}.skills{grid-template-columns:1fr}.feature-visual{min-height:300px}.mock{width:82%}footer{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.glow{display:none}.feature,.project,.btn,.mock{transition:none}}
 </style>
 </head>
-<body class="bg-white text-gray-900">
-<header class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-200 z-50">
-<div class="container flex justify-between items-center py-4">
-<h1 class="font-bold text-lg">Mohith Krishnaa</h1>
-<nav class="hidden md:flex gap-8 text-sm font-semibold"><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
-<button id="menuBtn" class="md:hidden text-xl" aria-label="Open navigation">&#9776;</button>
-</div>
-<div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 bg-white"><div class="container flex flex-col gap-4 py-4 text-sm font-semibold"><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div></div>
+<body>
+<div class="glow" id="glow"></div>
+<header class="nav" id="nav">
+<a class="brand" href="#top">MK<span>.</span></a>
+<nav class="navlinks" aria-label="Primary navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#skills">Stack</a><a href="#contact">Contact</a></nav>
+<button class="menu" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
 </header>
-<section class="section pt-40"><div class="container">
-<h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight">Automation & <span class="gradient-accent">Tooling</span> Developer</h2>
-<p class="text-lg sm:text-xl text-gray-600 mb-6 max-w-2xl">Building backend-powered tools, bots, inspection utilities and automation pipelines.</p>
-<p class="text-gray-700 max-w-2xl mb-10">Focused on practical engineering — scraping workflows, structured automation systems, binary inspection tools, and deployable backend utilities.</p>
-<div class="flex flex-col sm:flex-row gap-4"><a href="https://github.com/mohith-krishnaa?tab=repositories" class="bg-black text-white px-6 py-3 rounded font-semibold text-center">View Projects</a><a href="/resume.pdf" class="border border-black px-6 py-3 rounded font-semibold text-center">Download Resume</a></div>
+<main id="top">
+<section class="hero"><div class="container">
+<div class="eyebrow reveal">Computer Science / Data Science · Hyderabad</div>
+<h1 class="reveal delay-1">I BUILD<br><em>SOFTWARE</em><br>THAT WORKS.</h1>
+<p class="hero-copy reveal delay-2">I build practical software across backend systems, automation, AI applications and developer tools — then test, ship and improve it.</p>
+<div class="actions reveal delay-3"><a class="btn primary" href="#work">Explore the work ↘</a><a class="btn" href="https://github.com/mohith-krishnaa" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+<div class="hero-meta reveal delay-3"><span><i class="dot"></i>Open to opportunities</span><span>Python · Java · React</span><span>Automation · AI · Tools</span></div>
 </div></section>
-<section id="about" class="section bg-gray-50"><div class="container"><h2 class="text-3xl font-bold mb-8">About</h2><p class="text-gray-700 mb-6 max-w-3xl">I design automation systems and backend-powered developer tools. My work explores scraping pipelines, media automation services, binary inspection utilities, and structured asset extraction tools.</p><p class="text-gray-700 max-w-3xl">I focus on reliability, controlled workflows, validation logic, and deployment-ready systems rather than experimental scripts.</p></div></section>
-<section id="projects" class="section"><div class="container">
-<h2 class="text-3xl font-bold mb-12">Selected Work</h2>
-<div class="space-y-12 mb-16">
-<div class="card p-8 rounded-lg"><h3 class="text-2xl font-bold mb-4">Media Processing & Downloader API</h3><p class="text-gray-700 mb-4 max-w-3xl">Backend automation service implementing validation, resource limits, file-size enforcement and temporary-file cleanup.</p><p class="text-sm text-gray-600 mb-4">Stack: Flask, Python, yt-dlp</p><div class="flex gap-6 text-sm font-semibold"><a href="https://github.com/mohith-krishnaa/socialmediadownloader" class="underline">GitHub</a></div></div>
-<div class="card p-8 rounded-lg"><h3 class="text-2xl font-bold mb-4">Telegram News Automation Bots</h3><p class="text-gray-700 mb-4 max-w-3xl">Automated scraping bots delivering structured updates with duplicate filtering, retry handling and scheduled workflows.</p><p class="text-sm text-gray-600 mb-4">Stack: Python, Requests, Telegram Bot API</p><div class="flex gap-6 text-sm font-semibold"><a href="https://github.com/mohith-krishnaa/animenewsbotbymk" class="underline">Anime Bot</a><a href="https://github.com/mohith-krishnaa/gamedianewsbot" class="underline">Gaming Bot</a></div></div>
-<div class="card p-8 rounded-lg"><h3 class="text-2xl font-bold mb-4">Protobuf Hex Inspector</h3><p class="text-gray-700 mb-4 max-w-3xl">Browser-based utility for inspecting schema-less Protobuf HEX payloads and decoding supported wire types.</p><p class="text-sm text-gray-600 mb-4">Stack: HTML, CSS, Vanilla JavaScript</p><div class="flex gap-6 text-sm font-semibold"><a href="https://mohith-krishnaa.github.io/protobuf-hex-inspector/" class="underline">Live</a><a href="https://github.com/mohith-krishnaa/protobuf-hex-inspector" class="underline">GitHub</a></div></div>
-</div>
-<h3 class="text-xl font-semibold mb-6">Other Projects</h3>
-<div class="grid sm:grid-cols-2 gap-8">
-<div class="card p-6 rounded-lg"><h4 class="font-bold mb-2">HealthAI Pro+</h4><p class="text-sm text-gray-700 mb-3">Java-based AI chatbot prototype with a simple browser interface.</p><a href="https://github.com/mohith-krishnaa/healthai-java-chatbot" class="underline text-sm font-semibold">GitHub</a></div>
-<div class="card p-6 rounded-lg"><h4 class="font-bold mb-2">EduAI Platform</h4><p class="text-sm text-gray-700 mb-3">Educational AI prototype exploring structured study workflows.</p><a href="https://github.com/mohith-krishnaa/EduAI-Platform" class="underline text-sm font-semibold">GitHub</a></div>
-<div class="card p-6 rounded-lg"><h4 class="font-bold mb-2">CropMarket</h4><p class="text-sm text-gray-700 mb-3">Prototype exploring crop-market data extraction and presentation.</p><a href="https://github.com/mohith-krishnaa/CropMarket" class="underline text-sm font-semibold">GitHub</a></div>
-<div class="card p-6 rounded-lg"><h4 class="font-bold mb-2">Image Steganography Tool</h4><p class="text-sm text-gray-700 mb-3">Browser utility for experimenting with image-based hidden data workflows.</p><div class="flex gap-4 text-sm font-semibold"><a href="https://mohith-krishnaa.github.io/stegano.io/" class="underline">Live</a><a href="https://github.com/mohith-krishnaa/stegano.io" class="underline">GitHub</a></div></div>
-<div class="card p-6 rounded-lg"><h4 class="font-bold mb-2">FF Icon Extractor</h4><p class="text-sm text-gray-700 mb-3">Asset scanning and preview utility for Free Fire icon resources.</p><div class="flex gap-4 text-sm font-semibold"><a href="https://mohith-krishnaa.github.io/Iconsextractor/" class="underline">Live</a><a href="https://github.com/mohith-krishnaa/Iconsextractor" class="underline">GitHub</a></div></div>
-<div class="card p-6 rounded-lg"><h4 class="font-bold mb-2">Booyah Pass Asset Browser</h4><p class="text-sm text-gray-700 mb-3">Web-based asset preview utility for game content resources.</p><div class="flex gap-4 text-sm font-semibold"><a href="https://mohith-krishnaa.github.io/Bpasset/" class="underline">Live</a><a href="https://github.com/mohith-krishnaa/Bpasset" class="underline">GitHub</a></div></div>
+
+<section id="work"><div class="container">
+<div class="section-head reveal"><div><div class="kicker">01 / Featured</div><h2 class="section-title">The flagship.</h2></div><p class="section-note">A product-first portfolio starts with the project that best represents how I think and build.</p></div>
+<article class="feature reveal">
+<div class="feature-copy"><div><span class="number">01 — CROPMARK</span><h3>Smart farming decisions.</h3><p>A browser-based farming decision-support product combining crop prices, market context, trends, profitability calculations, weather context, multilingual interaction and voice-friendly controls.</p><div class="tags"><span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">Recharts</span><span class="tag">Product UI</span></div></div><div class="feature-links"><a class="btn primary" href="https://cropmarketapp.netlify.app/" target="_blank" rel="noreferrer">Live Demo ↗</a><a class="btn" href="https://github.com/mohith-krishnaa/CropMarket" target="_blank" rel="noreferrer">Source ↗</a></div></div>
+<div class="feature-visual" aria-label="CropMarket visual preview"><div class="mock"><div class="mock-top"><div class="mock-logo">CROP<b>MARKET</b></div><div class="pill"></div></div><div class="mock-card"><span style="color:#829082;font-size:10px;letter-spacing:.1em">TOMATO — ANANTAPUR</span><strong>SELL NOW</strong><div class="mock-line"></div><div class="mock-line short"></div></div><div class="mock-card"><span style="color:#829082;font-size:10px;letter-spacing:.1em">EXPECTED REVENUE</span><div style="font-size:23px;margin-top:10px;color:#f1f3ed">₹25,000</div></div><div class="mock-card chart"><span style="color:#829082;font-size:10px;letter-spacing:.1em">7-DAY PRICE TREND</span></div></div></div>
+</article>
+</div></section>
+
+<section><div class="container">
+<div class="section-head reveal"><div><div class="kicker">02 / Selected work</div><h2 class="section-title">Tools & systems.</h2></div><p class="section-note">Different problems, same approach: make the workflow reliable and useful.</p></div>
+<div class="grid">
+<article class="project reveal"><div><div class="project-top"><span class="project-num">02</span><span>↗</span></div><h4>Protobuf Hex Inspector</h4><p>Schema-less browser utility for inspecting Protobuf HEX payloads and supported wire types.</p></div><div class="project-bottom"><span class="project-stack">JavaScript · BigInt</span><a class="arrow" href="https://mohith-krishnaa.github.io/protobuf-hex-inspector/" target="_blank" rel="noreferrer">↗</a></div></article>
+<article class="project reveal delay-1"><div><div class="project-top"><span class="project-num">03</span><span>↗</span></div><h4>HealthAI Pro+</h4><p>Educational health-information assistant with a Java HTTP backend, local fallback, caching and Gemini integration.</p></div><div class="project-bottom"><span class="project-stack">Java · Gemini · HTTP</span><a class="arrow" href="https://mohith-krishnaa.github.io/healthai-java-chatbot/" target="_blank" rel="noreferrer">↗</a></div></article>
+<article class="project reveal"><div><div class="project-top"><span class="project-num">04</span><span>↗</span></div><h4>FF Icon Extractor</h4><p>Browser utility for scanning known asset-ID patterns and previewing matching game icons.</p></div><div class="project-bottom"><span class="project-stack">HTML · CSS · JavaScript</span><a class="arrow" href="https://mohith-krishnaa.github.io/Iconsextractor/" target="_blank" rel="noreferrer">↗</a></div></article>
+<article class="project reveal delay-1"><div><div class="project-top"><span class="project-num">05</span><span>↗</span></div><h4>EduAI Platform</h4><p>AI-assisted information platform focused on retrieving and summarizing policies, regulations and government schemes.</p></div><div class="project-bottom"><span class="project-stack">Web · AI · Retrieval</span><a class="arrow" href="https://mohith-krishnaa.github.io/EduAI-Platform/" target="_blank" rel="noreferrer">↗</a></div></article>
+<article class="project reveal"><div><div class="project-top"><span class="project-num">06</span><span>↗</span></div><h4>Booyah Pass Asset Browser</h4><p>Browser-based utility for exploring a defined set of game asset paths and previewing available images.</p></div><div class="project-bottom"><span class="project-stack">HTML · CSS · JavaScript</span><a class="arrow" href="https://mohith-krishnaa.github.io/Bpasset/" target="_blank" rel="noreferrer">↗</a></div></article>
+<article class="project reveal delay-1"><div><div class="project-top"><span class="project-num">07</span><span>↗</span></div><h4>stegano.io</h4><p>Client-side image steganography utility for experimenting with LSB-based data hiding and extraction.</p></div><div class="project-bottom"><span class="project-stack">JavaScript · Browser APIs</span><a class="arrow" href="https://mohith-krishnaa.github.io/stegano.io/" target="_blank" rel="noreferrer">↗</a></div></article>
 </div></div></section>
-<section id="contact" class="section bg-gray-50"><div class="container text-center"><h2 class="text-3xl font-bold mb-6">Contact</h2><p class="text-gray-700 mb-6">Open to automation, tooling and backend-focused internships.</p><div class="flex flex-col sm:flex-row justify-center gap-6 font-semibold"><a href="mailto:puttamohithkrishnaa@gmail.com">Email</a><a href="https://github.com/mohith-krishnaa">GitHub</a><a href="https://www.linkedin.com/in/mohithkrishnaa">LinkedIn</a></div></div></section>
-<script>const btn=document.getElementById('menuBtn');const menu=document.getElementById('mobileMenu');btn.addEventListener('click',()=>menu.classList.toggle('hidden'));menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.add('hidden')));</script>
+
+<section><div class="container">
+<div class="section-head reveal"><div><div class="kicker">03 / Automation</div><h2 class="section-title">Bots that ship.</h2></div><p class="section-note">Scheduled pipelines that turn web data into useful Telegram output.</p></div>
+<div class="bots">
+<article class="bot reveal"><span class="number">08 — ANIME NEWS</span><h4>Anime News Automation</h4><p>Scraping, parsing, duplicate protection, image handling and scheduled Telegram publishing.</p><a href="https://t.me/AniTimesIsland_acn" target="_blank" rel="noreferrer">Open live channel ↗</a></article>
+<article class="bot reveal delay-1"><span class="number">09 — GAMING NEWS</span><h4>Gaming News Automation</h4><p>Gaming-news ingestion and scheduled Telegram publishing with formatting, image processing and duplicate handling.</p><a href="https://t.me/GamediaNews_acn" target="_blank" rel="noreferrer">Open live channel ↗</a></article>
+</div></div></section>
+
+<section id="about"><div class="container">
+<div class="about reveal"><div><div class="kicker">04 / About</div><h2 class="section-title">Build. Break. Understand. Rebuild.</h2></div><div><p class="about-copy">I'm a CSE / Data Science student who learns by <span>building real systems, testing assumptions and fixing what doesn't hold up.</span></p></div></div>
+</div></section>
+
+<section id="skills"><div class="container">
+<div class="section-head reveal"><div><div class="kicker">05 / Stack</div><h2 class="section-title">What I use.</h2></div></div>
+<div class="skills reveal"><div class="skill-group"><h4>Languages</h4><p>Python · Java · C++ · JavaScript · HTML · CSS</p></div><div class="skill-group"><h4>Backend</h4><p>Flask · FastAPI · REST APIs · HTTP · JSON</p></div><div class="skill-group"><h4>Data</h4><p>NumPy · Pandas · MongoDB</p></div><div class="skill-group"><h4>Automation</h4><p>BeautifulSoup · Requests · yt-dlp · Telegram Bot API · GitHub Actions</p></div><div class="skill-group"><h4>Tools</h4><p>Git · GitHub · Linux · Docker</p></div><div class="skill-group"><h4>AI</h4><p>Gemini API · AI applications · Retrieval / summarization workflows</p></div></div>
+</div></section>
+
+<section id="contact"><div class="container"><div class="contact reveal"><div><div class="kicker">06 / Contact</div><h2>Let's build<br>something real.</h2><p>Open to internships, collaborations and backend / automation / AI-focused opportunities.</p></div><div class="contact-links"><a href="mailto:puttamohithkrishnaa@gmail.com">EMAIL ↗</a><a href="https://github.com/mohith-krishnaa" target="_blank" rel="noreferrer">GITHUB ↗</a><a href="https://www.linkedin.com/in/mohithkrishnaa" target="_blank" rel="noreferrer">LINKEDIN ↗</a></div></div></div></section>
+</main>
+<footer class="container"><span>© 2026 MOHITH KRISHNAA</span><span>BUILT WITH HTML · CSS · JAVASCRIPT</span></footer>
+<script>
+const nav=document.getElementById('nav');
+const menuBtn=document.getElementById('menuBtn');
+menuBtn.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open)});
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}));
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const glow=document.getElementById('glow');
+window.addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});
+</script>
 </body>
 </html>
