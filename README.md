@@ -1,47 +1,46 @@
-# Mohith Krishna – Automation & Tooling Portfolio
+# Mohith Krishnaa — Developer Portfolio
 
-Live Site: https://mohithkrishna.pages.dev
+Live site: https://mohithkrishna.pages.dev
 
----
+This repository contains my personal portfolio, focused on **backend development, automation, developer tooling, and practical web utilities**.
 
-## Overview
+## Featured work
 
-This repository contains my professional portfolio website.
+- **Protobuf Hex Inspector** — browser-based Protobuf HEX inspection utility
+- **Social Media Downloader** — Flask + yt-dlp media downloader prototype with resource controls
+- **Anime News Bot** — scheduled scraping and Telegram publishing automation
+- **Gaming News Bot** — automated gaming-news collection and publishing
+- **HealthAI Pro+** — Java-based AI chatbot prototype
+- **CropMarket** — crop-market data prototype
+- **FF Icon Extractor** — browser-based asset scanning and preview utility
+- **Booyah Pass Asset Browser** — web-based asset preview utility
 
-I specialize in building automation systems, backend-powered tools, and structured developer utilities using Python and REST-based APIs.
+## Tech stack
 
-The portfolio highlights:
+**Languages:** Python, Java, JavaScript, C++
 
-- Media Processing & Downloader API
-- Telegram Automation Bots
-- Crop Market Scraper API
-- Chatbot API
-- Binary Inspection & Tooling Projects
+**Backend:** Flask, REST APIs
 
----
+**Automation:** Requests, BeautifulSoup, yt-dlp, Telegram Bot API
 
-## Tech Stack
+**Web:** HTML, CSS, JavaScript, Tailwind CSS
 
-- HTML5
-- Tailwind CSS
-- Responsive Layout
-- Cloudflare Pages Deployment
-- GitHub Integration
+**Tooling:** Git, GitHub, GitHub Actions
 
----
+## Repository structure
+
+The portfolio is intentionally kept as a lightweight static site. There is no frontend build pipeline required by the current implementation.
 
 ## Deployment
 
-This portfolio is deployed using:
-
-- GitHub (version control)
-- Cloudflare Pages (hosting & CDN)
-
-Any updates pushed to the main branch automatically trigger a redeploy.
-
----
+The site is deployed as a static website. The repository is maintained through GitHub and the live site is hosted on Cloudflare Pages.
 
 ## Contact
 
-LinkedIn: https://linkedin.com/in/mohithkrishnaa  
-GitHub: https://github.com/mohithkrishnaa-dev  
+- Email: puttamohithkrishnaa@gmail.com
+- GitHub: https://github.com/mohith-krishnaa
+- LinkedIn: https://www.linkedin.com/in/mohithkrishnaa
+
+## License
+
+The portfolio source is provided for reference. Individual project repositories may use their own licenses and terms.
