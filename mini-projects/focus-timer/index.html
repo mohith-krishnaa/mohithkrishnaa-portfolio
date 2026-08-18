@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Timer</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: Inter, system-ui, sans-serif;
+      background: #050505;
+      color: #fff;
+    }
+    .card {
+      width: min(92vw, 430px);
+      padding: 32px;
+      border: 1px solid #242424;
+      border-radius: 24px;
+      background: #0d0d0d;
+      box-shadow: 0 20px 70px rgba(0,0,0,.45);
+      text-align: center;
+    }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    p { margin: 0 0 28px; color: #999; }
+    #time { font-size: clamp(64px, 18vw, 96px); font-weight: 700; letter-spacing: -4px; margin: 10px 0 26px; }
+    .buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    button {
+      border: 1px solid #303030;
+      background: #171717;
+      color: #fff;
+      padding: 11px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button:hover { background: #222; }
+    .primary { background: #fff; color: #000; border-color: #fff; }
+    .primary:hover { background: #ddd; }
+    .status { margin-top: 22px; color: #777; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Focus Timer</h1>
+    <p>25 minutes of distraction-free work.</p>
+    <div id="time">25:00</div>
+    <div class="buttons">
+      <button class="primary" id="start">Start</button>
+      <button id="pause">Pause</button>
+      <button id="reset">Reset</button>
+    </div>
+    <div class="status" id="status">Ready when you are.</div>
+  </main>
+
+  <script>
+    const DURATION = 25 * 60;
+    let remaining = DURATION;
+    let timer = null;
+
+    const time = document.getElementById('time');
+    const status = document.getElementById('status');
+
+    function render() {
+      const minutes = Math.floor(remaining / 60).toString().padStart(2, '0');
+      const seconds = (remaining % 60).toString().padStart(2, '0');
+      time.textContent = `${minutes}:${seconds}`;
+    }
+
+    function start() {
+      if (timer || remaining === 0) return;
+      status.textContent = 'Focus mode is running.';
+      timer = setInterval(() => {
+        remaining--;
+        render();
+        if (remaining <= 0) {
+          clearInterval(timer);
+          timer = null;
+          status.textContent = 'Session complete. Take a short break.';
+        }
+      }, 1000);
+    }
+
+    function pause() {
+      if (!timer) return;
+      clearInterval(timer);
+      timer = null;
+      status.textContent = 'Paused.';
+    }
+
+    function reset() {
+      clearInterval(timer);
+      timer = null;
+      remaining = DURATION;
+      render();
+      status.textContent = 'Ready when you are.';
+    }
+
+    document.getElementById('start').addEventListener('click', start);
+    document.getElementById('pause').addEventListener('click', pause);
+    document.getElementById('reset').addEventListener('click', reset);
+    render();
+  </script>
+</body>
+</html>
