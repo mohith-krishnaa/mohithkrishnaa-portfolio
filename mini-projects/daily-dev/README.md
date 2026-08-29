@@ -11,6 +11,12 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - Prefer useful utilities over empty placeholder changes.
 - Keep experiments dependency-free when practical.
 
+## Utilities
+
+- `word-counter.py` — count words, characters, and lines.
+- `password-generator.py` — generate passwords with the standard library's secure random generator.
+- `json-pretty.py` — format JSON from a file or stdin.
+
 ## Ideas
 
 - String and text utilities
