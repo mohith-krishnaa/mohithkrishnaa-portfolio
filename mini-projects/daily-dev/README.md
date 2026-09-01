@@ -16,12 +16,14 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `word-counter.py` — count words, characters, and lines.
 - `password-generator.py` — generate passwords with the standard library's secure random generator.
 - `json-pretty.py` — format JSON from a file or stdin.
+- `url-checker.py` — validate HTTP and HTTPS URL syntax without making network requests.
 
 ## Ideas
 
 - String and text utilities
 - Date/time helpers
 - JSON tools
+- Number and statistics helpers
 - Small algorithms
 - Developer productivity scripts
 - Tiny browser experiments
