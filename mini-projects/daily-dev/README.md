@@ -17,6 +17,20 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `password-generator.py` — generate passwords with the standard library's secure random generator.
 - `json-pretty.py` — format JSON from a file or stdin.
 - `url-checker.py` — validate HTTP and HTTPS URL syntax without making network requests.
+- `slugify.py` — convert text into lowercase, hyphen-separated URL slugs.
+- `stats.py` — calculate common descriptive statistics for numeric data.
+- `temperature.py` — convert temperatures between Celsius, Fahrenheit, and Kelvin.
+- `text-stats.py` — report word, line, character, and non-whitespace counts.
+
+## Tests
+
+- `text-stats-test.py` — smoke tests for normal, multiline, and empty text input.
+
+Run the smoke test with:
+
+```bash
+python text-stats-test.py
+```
 
 ## Ideas
 
