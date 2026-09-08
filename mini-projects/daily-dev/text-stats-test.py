@@ -17,7 +17,9 @@ assert module.text_stats("hello world") == {
     "characters": 11,
     "non_whitespace": 10,
 }
-assert module.text_stats("one\ntwo\n") ["lines"] == 2
+assert module.text_stats("one\ntwo\n")["lines"] == 2
+assert module.text_stats("hello\tworld")["words"] == 2
+assert module.text_stats("   \n\t")["words"] == 0
 assert module.text_stats("") == {
     "words": 0,
     "lines": 0,
