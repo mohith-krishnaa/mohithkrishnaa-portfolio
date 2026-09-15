@@ -21,12 +21,17 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `stats.py` — calculate common descriptive statistics for numeric data.
 - `temperature.py` — convert temperatures between Celsius, Fahrenheit, and Kelvin.
 - `text-stats.py` — report word, line, character, and non-whitespace counts.
+- `percent-change.py` — calculate percentage change between two numeric values.
+- `unique-lines.py` — remove duplicate and blank lines while preserving first-seen order.
 
 ## Tests
 
 - `text-stats-test.py` — smoke tests for normal, multiline, and empty text input.
+- `stats-test.py` — checks descriptive statistics and empty-input handling.
+- `percent-change-test.py` — checks positive, negative, and zero-start edge cases.
+- `unique-lines-test.py` — checks duplicate/blank-line removal and order preservation.
 
-Run the smoke test with:
+Run an individual smoke test with:
 
 ```bash
 python text-stats-test.py
