@@ -31,9 +31,16 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `percent-change-test.py` — checks positive, negative, and zero-start edge cases.
 - `unique-lines-test.py` — checks duplicate/blank-line removal and order preservation.
 
-Run an individual smoke test with:
+Run an individual smoke test from the repository root with:
 
 ```bash
+python mini-projects/daily-dev/text-stats-test.py
+```
+
+Or run it from inside the collection directory:
+
+```bash
+cd mini-projects/daily-dev
 python text-stats-test.py
 ```
 
