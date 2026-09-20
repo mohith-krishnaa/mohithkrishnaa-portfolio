@@ -23,6 +23,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `text-stats.py` — report word, line, character, and non-whitespace counts.
 - `percent-change.py` — calculate percentage change between two numeric values.
 - `unique-lines.py` — remove duplicate and blank lines while preserving first-seen order.
+- `bytes.py` — convert byte counts into human-readable binary units.
 
 ## Tests
 
@@ -30,18 +31,19 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `stats-test.py` — checks descriptive statistics and empty-input handling.
 - `percent-change-test.py` — checks positive, negative, and zero-start edge cases.
 - `unique-lines-test.py` — checks duplicate/blank-line removal and order preservation.
+- `bytes-test.py` — checks byte conversion, fractional units, and negative-input validation.
 
 Run an individual smoke test from the repository root with:
 
 ```bash
-python mini-projects/daily-dev/text-stats-test.py
+python mini-projects/daily-dev/bytes-test.py
 ```
 
 Or run it from inside the collection directory:
 
 ```bash
 cd mini-projects/daily-dev
-python text-stats-test.py
+python bytes-test.py
 ```
 
 ## Ideas
