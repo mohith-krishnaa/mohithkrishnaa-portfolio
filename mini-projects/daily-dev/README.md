@@ -24,6 +24,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `percent-change.py` — calculate percentage change between two numeric values.
 - `unique-lines.py` — remove duplicate and blank lines while preserving first-seen order.
 - `bytes.py` — convert byte counts into human-readable binary units.
+- `run-tests.py` — run every dependency-free smoke test in the collection.
 
 ## Tests
 
@@ -32,6 +33,12 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `percent-change-test.py` — checks positive, negative, and zero-start edge cases.
 - `unique-lines-test.py` — checks duplicate/blank-line removal and order preservation.
 - `bytes-test.py` — checks byte conversion, fractional units, and negative-input validation.
+
+Run all smoke tests from the repository root with:
+
+```bash
+python mini-projects/daily-dev/run-tests.py
+```
 
 Run an individual smoke test from the repository root with:
 
