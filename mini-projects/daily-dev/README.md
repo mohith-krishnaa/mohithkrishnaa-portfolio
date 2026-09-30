@@ -24,6 +24,8 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `percent-change.py` — calculate percentage change between two numeric values.
 - `unique-lines.py` — remove duplicate and blank lines while preserving first-seen order.
 - `bytes.py` — convert byte counts into human-readable binary units.
+- `timestamp.py` — convert Unix timestamps to and from UTC ISO 8601 strings.
+- `diff.py` — show a compact unified diff between two UTF-8 text files.
 - `run-tests.py` — run every dependency-free smoke test in the collection.
 
 ## Tests
@@ -33,6 +35,8 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `percent-change-test.py` — checks positive, negative, and zero-start edge cases.
 - `unique-lines-test.py` — checks duplicate/blank-line removal and order preservation.
 - `bytes-test.py` — checks byte conversion, fractional units, and negative-input validation.
+- `timestamp-test.py` — checks Unix/ISO 8601 conversion and UTC handling.
+- `diff-test.py` — checks added and removed lines in a real temporary-file diff.
 
 Run all smoke tests from the repository root with:
 
