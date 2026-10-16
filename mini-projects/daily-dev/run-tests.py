@@ -11,8 +11,8 @@ ROOT = Path(__file__).resolve().parent
 def main() -> int:
     tests = sorted(ROOT.glob("*-test.py"))
     if not tests:
-        print("No smoke tests found.")
-        return 0
+        print("No smoke tests found.", file=sys.stderr)
+        return 1
 
     failed = []
     for test in tests:
