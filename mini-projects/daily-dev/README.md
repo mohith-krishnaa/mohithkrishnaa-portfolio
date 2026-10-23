@@ -38,6 +38,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `bytes-test.py` — checks byte conversion, fractional units, and negative-input validation.
 - `timestamp-test.py` — checks Unix/ISO 8601 conversion and UTC handling.
 - `iso-date-test.py` — checks timezone-aware, UTC, and leap-day ISO 8601 input.
+- `line-ending-normalizer-test.py` — checks mixed line endings, LF/CRLF output, empty input, and invalid newline styles.
 - `diff-test.py` — checks added and removed lines in a real temporary-file diff.
 
 Run all smoke tests from the repository root with:
