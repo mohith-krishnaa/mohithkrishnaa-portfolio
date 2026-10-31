@@ -16,7 +16,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `word-counter.py` — count words, characters, and lines.
 - `password-generator.py` — generate passwords with the standard library's secure random generator.
 - `json-pretty.py` — format JSON from a file or stdin.
-- `url-checker.py` — validate HTTP and HTTPS URL syntax without making network requests.
+- `url-checker.py` — validate HTTP and HTTPS URLs, including host and port syntax, without making network requests.
 - `slugify.py` — convert text into lowercase, hyphen-separated URL slugs.
 - `stats.py` — calculate common descriptive statistics for numeric data.
 - `temperature.py` — convert temperatures between Celsius, Fahrenheit, and Kelvin.
@@ -40,6 +40,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `iso-date-test.py` — checks timezone-aware, UTC, and leap-day ISO 8601 input.
 - `line-ending-normalizer-test.py` — checks mixed line endings, LF/CRLF output, empty input, and invalid newline styles.
 - `diff-test.py` — checks added and removed lines in a real temporary-file diff.
+- `url-checker-test.py` — checks supported schemes, missing hosts, whitespace, malformed ports, and malformed IPv6 authorities.
 
 Run all smoke tests from the repository root with:
 
