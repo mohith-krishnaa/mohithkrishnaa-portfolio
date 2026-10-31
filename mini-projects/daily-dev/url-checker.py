@@ -6,12 +6,20 @@ from urllib.parse import urlparse
 
 
 def is_valid_url(value: str) -> bool:
-    parsed = urlparse(value.strip())
-    return (
-        parsed.scheme in {"http", "https"}
-        and bool(parsed.netloc)
-        and bool(re.fullmatch(r"[^\s]+", value.strip()))
-    )
+    candidate = value.strip()
+    if not candidate or not re.fullmatch(r"[^\s]+", candidate):
+        return False
+
+    try:
+        parsed = urlparse(candidate)
+        if parsed.scheme not in {"http", "https"} or not parsed.hostname:
+            return False
+        # Accessing .port validates that a supplied port is numeric and in range.
+        _ = parsed.port
+    except ValueError:
+        return False
+
+    return True
 
 
 def main() -> None:
