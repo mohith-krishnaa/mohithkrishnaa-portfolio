@@ -63,7 +63,7 @@ def test_cli_accepts_arguments_and_reports_each_result() -> None:
 def test_cli_reads_urls_from_stdin() -> None:
     result = subprocess.run(
         [sys.executable, str(MODULE_PATH)],
-        input="https://example.com\\n\\nhttp://localhost:8080/health\\n",
+        input="https://example.com\n\nhttp://localhost:8080/health\n",
         capture_output=True,
         text=True,
         check=True,
