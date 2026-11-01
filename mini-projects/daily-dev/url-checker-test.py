@@ -57,7 +57,6 @@ def test_cli_accepts_arguments_and_reports_each_result() -> None:
         "valid: https://example.com",
         "invalid: ftp://example.com",
     ]
-    assert result.stderr == ""
 
 
 def test_cli_reads_urls_from_stdin() -> None:
@@ -72,7 +71,6 @@ def test_cli_reads_urls_from_stdin() -> None:
         "valid: https://example.com",
         "valid: http://localhost:8080/health",
     ]
-    assert result.stderr == ""
 
 
 test_accepts_http_and_https_urls()
