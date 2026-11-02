@@ -51,12 +51,13 @@ def test_cli_accepts_arguments_and_reports_each_result() -> None:
         ],
         capture_output=True,
         text=True,
-        check=True,
     )
+    assert result.returncode == 1
     assert result.stdout.splitlines() == [
         "valid: https://example.com",
         "invalid: ftp://example.com",
     ]
+    assert result.stderr == ""
 
 
 def test_cli_reads_urls_from_stdin() -> None:
@@ -65,12 +66,24 @@ def test_cli_reads_urls_from_stdin() -> None:
         input="https://example.com\n\nhttp://localhost:8080/health\n",
         capture_output=True,
         text=True,
-        check=True,
     )
+    assert result.returncode == 0
     assert result.stdout.splitlines() == [
         "valid: https://example.com",
         "valid: http://localhost:8080/health",
     ]
+
+
+def test_cli_returns_usage_status_for_empty_input() -> None:
+    result = subprocess.run(
+        [sys.executable, str(MODULE_PATH)],
+        input="",
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 2
+    assert result.stdout == ""
+    assert result.stderr.strip() == "Usage: python url-checker.py <url> [url ...]"
 
 
 test_accepts_http_and_https_urls()
@@ -80,4 +93,5 @@ test_rejects_malformed_or_out_of_range_ports()
 test_rejects_malformed_ipv6_authority()
 test_cli_accepts_arguments_and_reports_each_result()
 test_cli_reads_urls_from_stdin()
+test_cli_returns_usage_status_for_empty_input()
 print("url-checker.py smoke tests passed")
