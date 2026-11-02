@@ -22,16 +22,22 @@ def is_valid_url(value: str) -> bool:
     return True
 
 
-def main() -> None:
+def main() -> int:
     values = sys.argv[1:] or [line.strip() for line in sys.stdin if line.strip()]
     if not values:
-        print("Usage: python url-checker.py <url> [url ...]")
-        return
+        print("Usage: python url-checker.py <url> [url ...]", file=sys.stderr)
+        return 2
 
+    has_invalid_url = False
     for value in values:
-        status = "valid" if is_valid_url(value) else "invalid"
+        valid = is_valid_url(value)
+        status = "valid" if valid else "invalid"
         print(f"{status}: {value}")
+        has_invalid_url = has_invalid_url or not valid
+
+    # Make the CLI useful in shell scripts and CI pipelines.
+    return 1 if has_invalid_url else 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
