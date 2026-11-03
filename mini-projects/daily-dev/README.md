@@ -34,7 +34,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `text-stats-test.py` — smoke tests for normal, multiline, and empty text input.
 - `stats-test.py` — checks descriptive statistics and empty-input handling.
 - `percent-change-test.py` — checks positive, negative, and zero-start edge cases.
-- `unique-lines-test.py` — checks duplicate/blank-line removal and order preservation.
+- `unique-lines-test.py` — checks duplicate/blank-line removal, order preservation, and CLI stdin behavior.
 - `bytes-test.py` — checks byte conversion, fractional units, and negative-input validation.
 - `timestamp-test.py` — checks Unix/ISO 8601 conversion and UTC handling.
 - `iso-date-test.py` — checks timezone-aware, UTC, and leap-day ISO 8601 input.
