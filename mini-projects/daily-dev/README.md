@@ -39,7 +39,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `timestamp-test.py` — checks Unix/ISO 8601 conversion and UTC handling.
 - `iso-date-test.py` — checks timezone-aware, UTC, and leap-day ISO 8601 input.
 - `line-ending-normalizer-test.py` — checks mixed line endings, LF/CRLF output, empty input, and invalid newline styles.
-- `diff-test.py` — checks added and removed lines in a real temporary-file diff.
+- `diff-test.py` — checks added/removed lines, identical files, and missing final newlines in temporary-file diffs.
 - `url-checker-test.py` — checks supported schemes, missing hosts, whitespace, malformed ports, malformed IPv6 authorities, and CLI exit codes for valid, invalid, and empty input.
 
 Run all smoke tests from the repository root with:
