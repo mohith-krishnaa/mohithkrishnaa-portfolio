@@ -6,10 +6,19 @@ import sys
 
 
 def diff_files(first: str, second: str) -> str:
-    """Return a unified diff between two UTF-8 text files."""
+    """Return a unified diff, including markers for missing final newlines."""
     left = Path(first).read_text(encoding="utf-8").splitlines(keepends=True)
     right = Path(second).read_text(encoding="utf-8").splitlines(keepends=True)
-    return "".join(unified_diff(left, right, fromfile=first, tofile=second))
+
+    output = []
+    for line in unified_diff(left, right, fromfile=first, tofile=second):
+        output.append(line)
+        # difflib preserves missing line terminators but does not separate the
+        # next diff record when the final source line has no newline.
+        if line[:1] in {" ", "-", "+"} and not line.endswith("\n"):
+            output.append("\n\\ No newline at end of file\n")
+
+    return "".join(output)
 
 
 def main() -> None:
