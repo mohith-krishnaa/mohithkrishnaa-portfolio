@@ -36,7 +36,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `percent-change-test.py` — checks positive, negative, and zero-start edge cases.
 - `unique-lines-test.py` — checks duplicate/blank-line removal, order preservation, and CLI stdin behavior.
 - `bytes-test.py` — checks byte conversion, fractional units, and negative-input validation.
-- `timestamp-test.py` — checks Unix/ISO 8601 conversion and UTC handling.
+- `timestamp-test.py` — checks Unix/ISO 8601 conversion, timezone offsets, negative fractional timestamps, and rejection of non-finite or out-of-range values.
 - `iso-date-test.py` — checks timezone-aware, UTC, and leap-day ISO 8601 input.
 - `line-ending-normalizer-test.py` — checks mixed line endings, LF/CRLF output, empty input, and invalid newline styles.
 - `diff-test.py` — checks added/removed lines, identical files, and missing final newlines in temporary-file diffs.
