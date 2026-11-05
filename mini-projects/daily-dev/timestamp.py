@@ -1,12 +1,19 @@
 """Convert Unix timestamps to and from UTC ISO 8601 strings."""
 
 from datetime import datetime, timezone
+import math
 import sys
 
 
 def timestamp_to_iso(timestamp: float) -> str:
-    """Return a UTC ISO 8601 string for a Unix timestamp."""
-    return datetime.fromtimestamp(timestamp, tz=timezone.utc).isoformat()
+    """Return a UTC ISO 8601 string for a finite Unix timestamp."""
+    if not math.isfinite(timestamp):
+        raise ValueError("Timestamp must be finite")
+
+    try:
+        return datetime.fromtimestamp(timestamp, tz=timezone.utc).isoformat()
+    except (OverflowError, OSError, ValueError) as exc:
+        raise ValueError("Timestamp is outside the supported datetime range") from exc
 
 
 def iso_to_timestamp(value: str) -> float:
