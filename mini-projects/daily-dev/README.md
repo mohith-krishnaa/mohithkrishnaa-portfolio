@@ -19,7 +19,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `url-checker.py` — validate HTTP and HTTPS URLs, including host and port syntax, without making network requests; returns exit code `1` if any URL is invalid and `2` when no URLs are supplied.
 - `slugify.py` — convert text into lowercase, hyphen-separated URL slugs.
 - `stats.py` — calculate common descriptive statistics for numeric data.
-- `temperature.py` — convert temperatures between Celsius, Fahrenheit, and Kelvin.
+- `temperature.py` — convert temperatures between Celsius, Fahrenheit, and Kelvin while rejecting values below absolute zero and non-finite inputs.
 - `text-stats.py` — report word, line, character, and non-whitespace counts.
 - `percent-change.py` — calculate percentage change between two numeric values.
 - `unique-lines.py` — remove duplicate and blank lines while preserving first-seen order.
@@ -36,6 +36,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `percent-change-test.py` — checks positive, negative, and zero-start edge cases.
 - `unique-lines-test.py` — checks duplicate/blank-line removal, order preservation, and CLI stdin behavior.
 - `bytes-test.py` — checks byte conversion, fractional units, and negative-input validation.
+- `temperature-test.py` — checks standard conversions, absolute-zero boundaries, and rejection of non-finite inputs.
 - `timestamp-test.py` — checks Unix/ISO 8601 conversion, timezone offsets, negative fractional timestamps, and rejection of non-finite or out-of-range values.
 - `iso-date-test.py` — checks timezone-aware, UTC, and leap-day ISO 8601 input.
 - `line-ending-normalizer-test.py` — checks mixed line endings, LF/CRLF output, empty input, and invalid newline styles.
