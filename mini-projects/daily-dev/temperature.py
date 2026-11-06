@@ -1,21 +1,32 @@
 """Convert temperatures between Celsius, Fahrenheit, and Kelvin."""
 
+import math
+
+
+def _validate_temperature(value: float, unit: str, absolute_zero: float) -> None:
+    if not math.isfinite(value):
+        raise ValueError(f"{unit} must be finite")
+    if value < absolute_zero:
+        raise ValueError(f"{unit} cannot be below absolute zero")
+
 
 def celsius_to_fahrenheit(celsius: float) -> float:
+    _validate_temperature(celsius, "Celsius", -273.15)
     return (celsius * 9 / 5) + 32
 
 
 def fahrenheit_to_celsius(fahrenheit: float) -> float:
+    _validate_temperature(fahrenheit, "Fahrenheit", -459.67)
     return (fahrenheit - 32) * 5 / 9
 
 
 def celsius_to_kelvin(celsius: float) -> float:
+    _validate_temperature(celsius, "Celsius", -273.15)
     return celsius + 273.15
 
 
 def kelvin_to_celsius(kelvin: float) -> float:
-    if kelvin < 0:
-        raise ValueError("Kelvin cannot be below absolute zero")
+    _validate_temperature(kelvin, "Kelvin", 0)
     return kelvin - 273.15
 
 
