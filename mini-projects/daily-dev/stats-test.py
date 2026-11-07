@@ -1,6 +1,7 @@
 """Smoke tests for stats.py."""
 
 from importlib.util import module_from_spec, spec_from_file_location
+from math import inf, nan
 from pathlib import Path
 
 
@@ -26,5 +27,13 @@ except ValueError as exc:
     assert str(exc) == "values must not be empty"
 else:
     raise AssertionError("summarize([]) should reject empty input")
+
+for invalid in (nan, inf, -inf):
+    try:
+        module.summarize([1.0, invalid])
+    except ValueError as exc:
+        assert str(exc) == "values must all be finite numbers"
+    else:
+        raise AssertionError(f"summarize should reject {invalid!r}")
 
 print("stats smoke tests passed")
