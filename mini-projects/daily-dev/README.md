@@ -18,7 +18,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `json-pretty.py` — format JSON from a file or stdin.
 - `url-checker.py` — validate HTTP and HTTPS URLs, including host and port syntax, without making network requests; returns exit code `1` if any URL is invalid and `2` when no URLs are supplied.
 - `slugify.py` — convert text into lowercase, hyphen-separated URL slugs.
-- `stats.py` — calculate common descriptive statistics for numeric data.
+- `stats.py` — calculate common descriptive statistics for numeric data, rejecting non-finite values.
 - `temperature.py` — convert temperatures between Celsius, Fahrenheit, and Kelvin while rejecting values below absolute zero and non-finite inputs.
 - `text-stats.py` — report word, line, character, and non-whitespace counts.
 - `percent-change.py` — calculate percentage change between two numeric values.
@@ -32,7 +32,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 ## Tests
 
 - `text-stats-test.py` — smoke tests for normal, multiline, and empty text input.
-- `stats-test.py` — checks descriptive statistics and empty-input handling.
+- `stats-test.py` — checks descriptive statistics, empty-input handling, and rejection of NaN and infinite values.
 - `percent-change-test.py` — checks positive, negative, and zero-start edge cases.
 - `unique-lines-test.py` — checks duplicate/blank-line removal, order preservation, and CLI stdin behavior.
 - `bytes-test.py` — checks byte conversion, fractional units, and negative-input validation.
