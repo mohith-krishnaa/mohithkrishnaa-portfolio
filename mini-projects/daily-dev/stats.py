@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 
+from math import isfinite
 from statistics import mean, median, multimode
 
 
-def summarize(values: list[float]) -> dict[str, float | list[float]]:
-    """Return common descriptive statistics for a non-empty list."""
+def summarize(values: list[float]) -> dict[str, int | float | list[float]]:
+    """Return common descriptive statistics for a non-empty list of finite numbers."""
     if not values:
         raise ValueError("values must not be empty")
+    if not all(isfinite(value) for value in values):
+        raise ValueError("values must all be finite numbers")
 
     return {
         "count": len(values),
