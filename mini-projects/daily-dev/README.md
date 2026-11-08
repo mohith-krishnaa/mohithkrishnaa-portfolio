@@ -21,7 +21,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `stats.py` — calculate common descriptive statistics for numeric data, rejecting non-finite values.
 - `temperature.py` — convert temperatures between Celsius, Fahrenheit, and Kelvin while rejecting values below absolute zero and non-finite inputs.
 - `text-stats.py` — report word, line, character, and non-whitespace counts.
-- `percent-change.py` — calculate percentage change between two numeric values.
+- `percent-change.py` — calculate percentage change between two numeric values, rejecting non-finite inputs.
 - `unique-lines.py` — remove duplicate and blank lines while preserving first-seen order.
 - `bytes.py` — convert byte counts into human-readable binary units.
 - `timestamp.py` — convert Unix timestamps to and from UTC ISO 8601 strings.
@@ -33,7 +33,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 
 - `text-stats-test.py` — smoke tests for normal, multiline, and empty text input.
 - `stats-test.py` — checks descriptive statistics, empty-input handling, and rejection of NaN and infinite values.
-- `percent-change-test.py` — checks positive, negative, and zero-start edge cases.
+- `percent-change-test.py` — checks positive, negative, zero-start, and non-finite input cases.
 - `unique-lines-test.py` — checks duplicate/blank-line removal, order preservation, and CLI stdin behavior.
 - `bytes-test.py` — checks byte conversion, fractional units, and negative-input validation.
 - `temperature-test.py` — checks standard conversions, absolute-zero boundaries, and rejection of non-finite inputs.
