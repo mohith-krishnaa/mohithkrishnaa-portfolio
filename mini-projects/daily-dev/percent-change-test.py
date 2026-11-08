@@ -21,4 +21,13 @@ except ValueError:
 else:
     raise AssertionError("zero starting value should raise ValueError")
 
+for non_finite in (float("nan"), float("inf"), float("-inf")):
+    for old, new in ((non_finite, 10), (10, non_finite)):
+        try:
+            module.percent_change(old, new)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("non-finite values should raise ValueError")
+
 print("percent-change tests passed")
