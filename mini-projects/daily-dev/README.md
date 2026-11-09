@@ -15,7 +15,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 
 - `word-counter.py` — count words, characters, and lines.
 - `password-generator.py` — generate passwords with the standard library's secure random generator.
-- `json-pretty.py` — format JSON from a file or stdin.
+- `json-pretty.py` — format strict JSON from a file or stdin, rejecting non-standard NaN and infinity constants.
 - `url-checker.py` — validate HTTP and HTTPS URLs, including host and port syntax, without making network requests; returns exit code `1` if any URL is invalid and `2` when no URLs are supplied.
 - `slugify.py` — convert text into lowercase, hyphen-separated URL slugs.
 - `stats.py` — calculate common descriptive statistics for numeric data, rejecting non-finite values.
@@ -31,6 +31,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 
 ## Tests
 
+- `json-pretty-test.py` — checks sorted Unicode formatting, rejection of non-standard numeric constants, and CLI success/failure behavior.
 - `text-stats-test.py` — smoke tests for normal, multiline, and empty text input.
 - `stats-test.py` — checks descriptive statistics, empty-input handling, and rejection of NaN and infinite values.
 - `percent-change-test.py` — checks positive, negative, zero-start, and non-finite input cases.
