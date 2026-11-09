@@ -1,12 +1,16 @@
-"""Pretty-print JSON from a file or stdin using only Python's standard library."""
+""""Pretty-print JSON from a file or stdin using only the standard library."""
 
 import json
 import sys
 from pathlib import Path
 
 
+def _reject_nonstandard_constant(value: str) -> None:
+    raise ValueError(f"Non-standard JSON constant: {value}")
+
+
 def format_json(text: str) -> str:
-    data = json.loads(text)
+    data = json.loads(text, parse_constant=_reject_nonstandard_constant)
     return json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True)
 
 
@@ -18,7 +22,7 @@ def main() -> None:
 
     try:
         print(format_json(text))
-    except json.JSONDecodeError as exc:
+    except ValueError as exc:
         print(f"Invalid JSON: {exc}", file=sys.stderr)
         raise SystemExit(1)
 
