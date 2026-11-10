@@ -32,6 +32,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 ## Tests
 
 - `json-pretty-test.py` — checks sorted Unicode formatting, rejection of non-standard numeric constants, and CLI success/failure behavior.
+- `slugify-test.py` — checks punctuation and whitespace handling, accent normalization, empty input, and CLI argument/interactive input behavior.
 - `text-stats-test.py` — smoke tests for normal, multiline, and empty text input.
 - `stats-test.py` — checks descriptive statistics, empty-input handling, and rejection of NaN and infinite values.
 - `percent-change-test.py` — checks positive, negative, zero-start, and non-finite input cases.
