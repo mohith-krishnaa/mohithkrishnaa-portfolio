@@ -15,6 +15,11 @@ assert module.humanize_bytes(0) == "0 B"
 assert module.humanize_bytes(1024) == "1.00 KiB"
 assert module.humanize_bytes(1024**2) == "1.00 MiB"
 assert module.humanize_bytes(1536) == "1.50 KiB"
+assert module.humanize_bytes(1_048_575) == "1.00 MiB"
+assert module.humanize_bytes(1024**5) == "1.00 PiB"
+assert module.humanize_bytes(1024**6) == "1.00 EiB"
+assert module.humanize_bytes(1024**7) == "1.00 ZiB"
+assert module.humanize_bytes(1024**8) == "1.00 YiB"
 
 try:
     module.humanize_bytes(-1)
