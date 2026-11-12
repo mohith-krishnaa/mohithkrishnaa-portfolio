@@ -1,4 +1,4 @@
-""""Generate a secure random password using Python's standard library."""
+"""Generate a secure random password using Python's standard library."""
 
 import secrets
 import string
