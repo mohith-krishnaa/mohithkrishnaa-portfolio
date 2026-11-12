@@ -1,7 +1,8 @@
-"""Generate a secure random password using Python's standard library."""
+""""Generate a secure random password using Python's standard library."""
 
 import secrets
 import string
+import sys
 
 
 def generate_password(length: int = 16) -> str:
@@ -25,4 +26,5 @@ if __name__ == "__main__":
         length = int(input("Password length (default 16): ") or 16)
         print(generate_password(length))
     except ValueError as exc:
-        print(f"Error: {exc}")
+        print(f"Error: {exc}", file=sys.stderr)
+        raise SystemExit(2)
