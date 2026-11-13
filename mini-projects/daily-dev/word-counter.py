@@ -5,12 +5,12 @@ import sys
 
 
 def count_text(text: str) -> dict[str, int]:
-    words = re.findall(r"\b[\w'-]+\b", text, flags=re.UNICODE)
+    words = re.findall(r"\\b[\\w'-]+\\b", text, flags=re.UNICODE)
     return {
         "words": len(words),
         "characters": len(text),
         "characters_no_spaces": sum(not char.isspace() for char in text),
-        "lines": 0 if not text else text.count("\n") + 1,
+        "lines": len(text.splitlines()),
     }
 
 
