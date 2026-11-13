@@ -25,18 +25,18 @@ def test_counts_words_characters_and_lines() -> None:
 
 
 def test_does_not_count_trailing_newline_as_an_extra_line() -> None:
-    assert module.count_text("hello\\n")["lines"] == 1
-    assert module.count_text("one\\ntwo\\n")["lines"] == 2
+    assert module.count_text("hello\n")["lines"] == 1
+    assert module.count_text("one\ntwo\n")["lines"] == 2
 
 
 def test_counts_cr_and_crlf_line_endings() -> None:
-    assert module.count_text("one\\rtwo\\r\\nthree")["lines"] == 3
+    assert module.count_text("one\rtwo\r\nthree")["lines"] == 3
 
 
 def test_cli_reads_text_from_stdin() -> None:
     result = subprocess.run(
         [sys.executable, str(MODULE_PATH)],
-        input="hello\\n",
+        input="hello\n",
         capture_output=True,
         text=True,
         check=False,
