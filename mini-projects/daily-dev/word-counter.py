@@ -5,7 +5,7 @@ import sys
 
 
 def count_text(text: str) -> dict[str, int]:
-    words = re.findall(r"\\b[\\w'-]+\\b", text, flags=re.UNICODE)
+    words = re.findall(r"\b[\w'-]+\b", text, flags=re.UNICODE)
     return {
         "words": len(words),
         "characters": len(text),
