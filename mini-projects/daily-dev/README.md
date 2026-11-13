@@ -13,7 +13,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 
 ## Utilities
 
-- `word-counter.py` — count words, characters, and lines.
+- `word-counter.py` — count words, characters, and logical lines across LF, CRLF, or CR text.
 - `password-generator.py` — generate passwords with the standard library's secure random generator; rejects lengths below four and returns a nonzero CLI status for invalid input.
 - `json-pretty.py` — format strict JSON from a file or stdin, rejecting non-standard NaN and infinity constants.
 - `url-checker.py` — validate HTTP and HTTPS URLs, including host and port syntax, without making network requests; returns exit code `1` if any URL is invalid and `2` when no URLs are supplied.
@@ -31,6 +31,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 
 ## Tests
 
+- `word-counter-test.py` — checks word and character counts, trailing newlines, LF/CRLF/CR line endings, and stdin behavior.
 - `json-pretty-test.py` — checks sorted Unicode formatting, rejection of non-standard numeric constants, and CLI success/failure behavior.
 - `password-generator-test.py` — checks generated password length and required character classes, minimum-length validation, and CLI success/error exit codes.
 - `slugify-test.py` — checks punctuation and whitespace handling, accent normalization, empty input, and CLI argument/interactive input behavior.
