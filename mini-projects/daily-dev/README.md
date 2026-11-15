@@ -27,6 +27,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `timestamp.py` — convert Unix timestamps to and from UTC ISO 8601 strings.
 - `iso-date.py` — normalize ISO 8601 date/time input to a consistent UTC representation.
 - `diff.py` — show a compact unified diff between two UTF-8 text files.
+- `file-hash.py` — calculate streaming SHA-256 checksums for files or binary stdin.
 - `run-tests.py` — run every dependency-free smoke test in the collection.
 
 ## Tests
@@ -45,6 +46,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `iso-date-test.py` — checks timezone-aware, UTC, and leap-day ISO 8601 input.
 - `line-ending-normalizer-test.py` — checks mixed line endings, LF/CRLF output, empty input, and invalid newline styles.
 - `diff-test.py` — checks added/removed lines, identical files, and missing final newlines in temporary-file diffs.
+- `file-hash-test.py` — checks empty and binary files, chunked hashing, stdin, multiple paths, and file errors.
 - `url-checker-test.py` — checks supported schemes, missing hosts, whitespace, malformed ports, malformed IPv6 authorities, and CLI exit codes for valid, invalid, and empty input.
 
 Run all smoke tests from the repository root with:
