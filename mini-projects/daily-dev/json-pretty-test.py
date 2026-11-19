@@ -1,48 +1,78 @@
 """Smoke tests for strict JSON parsing and CLI behavior."""
 
-import importlib.util
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 
 
-MODULE_PATH = Path(__file__).with_name("json-pretty.py")
-spec = importlib.util.spec_from_file_location("json_pretty", MODULE_PATH)
-if spec is None or spec.loader is None:
-    raise RuntimeError("Could not load json-pretty.py")
-module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(module)
+SCRIPT = Path(__file__).with_name("json-pretty.py")
 
-assert module.format_json('{"b": 1, "a": "café"}') == '{\n  "a": "café",\n  "b": 1\n}'
 
-for constant in ("NaN", "Infinity", "-Infinity"):
-    try:
-        module.format_json('{"value": ' + constant + '}')
-    except ValueError as exc:
-        assert constant in str(exc)
-    else:
-        raise AssertionError(f"{constant} should be rejected as non-standard JSON")
+def run_cli(*args: str, input_text: str | None = None):
+    return subprocess.run(
+        [sys.executable, "-S", str(SCRIPT), *args],
+        input=input_text,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
 
-valid = subprocess.run(
-    [sys.executable, str(MODULE_PATH)],
-    input='{"ok": true}',
-    text=True,
-    capture_output=True,
-    check=False,
-)
-assert valid.returncode == 0
-assert valid.stdout == '{\n  "ok": true\n}\n'
-assert valid.stderr == ""
 
-invalid = subprocess.run(
-    [sys.executable, str(MODULE_PATH)],
-    input='{"value": NaN}',
-    text=True,
-    capture_output=True,
-    check=False,
-)
-assert invalid.returncode == 1
-assert invalid.stdout == ""
-assert "Invalid JSON: Non-standard JSON constant: NaN" in invalid.stderr
+def test_formats_sorted_unicode_json() -> None:
+    result = run_cli(input_text='{"b": 1, "a": "café"}')
+    assert result.returncode == 0, result.stderr
+    assert result.stdout == '{\n  "a": "café",\n  "b": 1\n}\n'
+    assert result.stderr == ""
 
+
+def test_rejects_nonstandard_numeric_constants() -> None:
+    for constant in ("NaN", "Infinity", "-Infinity"):
+        result = run_cli(input_text='{"value": ' + constant + '}')
+        assert result.returncode == 1
+        assert result.stdout == ""
+        assert f"Non-standard JSON constant: {constant}" in result.stderr
+
+
+def test_missing_file_returns_clean_read_error() -> None:
+    with tempfile.TemporaryDirectory() as directory:
+        missing = Path(directory) / "missing.json"
+        result = run_cli(str(missing))
+    assert result.returncode == 1
+    assert result.stdout == ""
+    assert result.stderr.startswith("Could not read input:")
+    assert "Traceback" not in result.stderr
+
+
+def test_invalid_utf8_file_returns_clean_read_error() -> None:
+    with tempfile.TemporaryDirectory() as directory:
+        path = Path(directory) / "invalid.json"
+        path.write_bytes(b'{"value": "\\xff"}')
+        result = run_cli(str(path))
+    assert result.returncode == 1
+    assert result.stdout == ""
+    assert result.stderr.startswith("Could not read input:")
+    assert "Traceback" not in result.stderr
+
+
+def test_rejects_extra_file_arguments() -> None:
+    result = run_cli("first.json", "second.json")
+    assert result.returncode == 2
+    assert result.stdout == ""
+    assert "Usage:" in result.stderr
+
+
+def test_reports_invalid_json() -> None:
+    result = run_cli(input_text='{"value":')
+    assert result.returncode == 1
+    assert result.stdout == ""
+    assert result.stderr.startswith("Invalid JSON:")
+
+
+test_formats_sorted_unicode_json()
+test_rejects_nonstandard_numeric_constants()
+test_missing_file_returns_clean_read_error()
+test_invalid_utf8_file_returns_clean_read_error()
+test_rejects_extra_file_arguments()
+test_reports_invalid_json()
 print("json-pretty.py smoke tests passed")
