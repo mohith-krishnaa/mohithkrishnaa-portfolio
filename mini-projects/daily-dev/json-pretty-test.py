@@ -47,7 +47,7 @@ def test_missing_file_returns_clean_read_error() -> None:
 def test_invalid_utf8_file_returns_clean_read_error() -> None:
     with tempfile.TemporaryDirectory() as directory:
         path = Path(directory) / "invalid.json"
-        path.write_bytes(b'{"value": "\\xff"}')
+        path.write_bytes(b'{"value": "\xff"}')
         result = run_cli(str(path))
     assert result.returncode == 1
     assert result.stdout == ""
