@@ -30,6 +30,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `file-hash.py` — calculate streaming SHA-256 checksums for files or binary stdin.
 - `csv-check.py` — inspect CSV headers and row widths, reporting inconsistent records without loading the whole file.
 - `env-check.py` — check `.env` assignment syntax and duplicate variable names without displaying values.
+- `zip-audit.py` — inspect ZIP member paths for traversal, absolute paths, Windows drive paths, and symlink entries before extraction; it does not scan file contents for malware.
 - `run-tests.py` — run every dependency-free smoke test with a 30-second per-test timeout by default; supports a custom `--timeout` in seconds.
 
 ## Tests
@@ -53,6 +54,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `csv-check-test.py` — checks quoted and multiline fields, inconsistent rows, headerless input, UTF-8 BOMs, stdin, empty files, and malformed quoting.
 - `url-checker-test.py` — checks supported schemes, missing hosts, whitespace, malformed ports, malformed IPv6 authorities, and CLI exit codes for valid, invalid, and empty input.
 - `run-tests-test.py` — checks timeout parsing and verifies that a timed-out test is reported while later tests continue.
+- `zip-audit-test.py` — checks safe archives, POSIX and Windows traversal paths, symlink entries, and invalid ZIP handling.
 
 Run all smoke tests from the repository root with:
 
@@ -91,6 +93,12 @@ Check a `.env` file without printing its values:
 ```bash
 python mini-projects/daily-dev/env-check.py .env
 python mini-projects/daily-dev/env-check.py < .env
+```
+
+Inspect a ZIP archive before extracting it (this checks member paths, not file contents):
+
+```bash
+python mini-projects/daily-dev/zip-audit.py downloads/archive.zip
 ```
 
 ## Ideas
