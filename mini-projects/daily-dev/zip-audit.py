@@ -1,4 +1,4 @@
-"""Check ZIP archives for paths that can escape the extraction directory."""
+"""Check ZIP archives for paths that can escape or conflict in the extraction directory."""
 
 import argparse
 import ntpath
@@ -9,11 +9,12 @@ import zipfile
 
 
 def audit_archive(path: Path) -> tuple[int, list[tuple[str, str]]]:
-    """Return the entry count and unsafe member paths found in a ZIP archive."""
+    """Return the entry count and unsafe or colliding member paths found."""
     with zipfile.ZipFile(path) as archive:
         entries = archive.infolist()
 
     issues = []
+    seen_destinations: set[str] = set()
     for entry in entries:
         name = entry.filename
         portable_name = name.replace("\\", "/")
@@ -30,7 +31,12 @@ def audit_archive(path: Path) -> tuple[int, list[tuple[str, str]]]:
         elif stat.S_ISLNK(mode):
             reason = "symbolic link"
         else:
-            continue
+            destination = member_path.as_posix().rstrip("/")
+            if destination in seen_destinations:
+                reason = "duplicate normalized destination"
+            else:
+                seen_destinations.add(destination)
+                continue
 
         issues.append((name, reason))
 

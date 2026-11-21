@@ -69,6 +69,19 @@ def test_detects_symbolic_link_entries() -> None:
     assert issues == [("shortcut", "symbolic link")]
 
 
+def test_detects_duplicate_normalized_destinations() -> None:
+    with tempfile.TemporaryDirectory() as directory:
+        archive_path = Path(directory) / "duplicates.zip"
+        make_archive(
+            archive_path,
+            [("docs//readme.txt", "first"), ("docs/./readme.txt", "second")],
+        )
+        _, issues = audit_archive(archive_path)
+    assert issues == [
+        ("docs/./readme.txt", "duplicate normalized destination")
+    ]
+
+
 def test_cli_returns_failure_for_invalid_zip() -> None:
     with tempfile.TemporaryDirectory() as directory:
         archive_path = Path(directory) / "not-a-zip.zip"
@@ -88,5 +101,6 @@ test_safe_nested_archive()
 test_detects_posix_traversal_and_absolute_paths()
 test_detects_windows_paths_and_backslash_traversal()
 test_detects_symbolic_link_entries()
+test_detects_duplicate_normalized_destinations()
 test_cli_returns_failure_for_invalid_zip()
-print("zip-audit tests passed (5 tests)")
+print("zip-audit tests passed (6 tests)")
