@@ -48,12 +48,12 @@ def test_detects_windows_paths_and_backslash_traversal() -> None:
         archive_path = Path(directory) / "windows.zip"
         make_archive(
             archive_path,
-            [(r"C:\outside.txt", "x"), (r"folder\..\escape.txt", "x")],
+            [(r"C:\\outside.txt", "x"), (r"folder\\..\\escape.txt", "x")],
         )
         _, issues = audit_archive(archive_path)
     assert issues == [
-        (r"C:\outside.txt", "Windows drive-qualified path"),
-        (r"folder\..\escape.txt", "parent-directory traversal"),
+        (r"C:\\outside.txt", "Windows drive-qualified path"),
+        (r"folder\\..\\escape.txt", "parent-directory traversal"),
     ]
 
 
@@ -82,6 +82,30 @@ def test_detects_duplicate_normalized_destinations() -> None:
     ]
 
 
+def test_detects_file_directory_path_collisions_in_both_orders() -> None:
+    scenarios = [
+        (
+            [("docs", "file"), ("docs/readme.txt", "child")],
+            ("docs/readme.txt", "file/directory path collision"),
+        ),
+        (
+            [("docs/readme.txt", "child"), ("docs", "file")],
+            ("docs", "file/directory path collision"),
+        ),
+        (
+            [("docs/", "directory"), ("docs", "file")],
+            ("docs", "file/directory destination collision"),
+        ),
+    ]
+
+    with tempfile.TemporaryDirectory() as directory:
+        for index, (entries, expected_issue) in enumerate(scenarios):
+            archive_path = Path(directory) / f"collision-{index}.zip"
+            make_archive(archive_path, entries)
+            _, issues = audit_archive(archive_path)
+            assert issues == [expected_issue], (entries, issues)
+
+
 def test_cli_returns_failure_for_invalid_zip() -> None:
     with tempfile.TemporaryDirectory() as directory:
         archive_path = Path(directory) / "not-a-zip.zip"
@@ -102,5 +126,6 @@ test_detects_posix_traversal_and_absolute_paths()
 test_detects_windows_paths_and_backslash_traversal()
 test_detects_symbolic_link_entries()
 test_detects_duplicate_normalized_destinations()
+test_detects_file_directory_path_collisions_in_both_orders()
 test_cli_returns_failure_for_invalid_zip()
-print("zip-audit tests passed (6 tests)")
+print("zip-audit tests passed (7 tests)")

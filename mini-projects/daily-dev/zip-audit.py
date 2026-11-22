@@ -14,7 +14,10 @@ def audit_archive(path: Path) -> tuple[int, list[tuple[str, str]]]:
         entries = archive.infolist()
 
     issues = []
-    seen_destinations: set[str] = set()
+    seen_destinations: dict[str, bool] = {}
+    seen_files: set[str] = set()
+    required_directories: set[str] = set()
+
     for entry in entries:
         name = entry.filename
         portable_name = name.replace("\\", "/")
@@ -32,11 +35,44 @@ def audit_archive(path: Path) -> tuple[int, list[tuple[str, str]]]:
             reason = "symbolic link"
         else:
             destination = member_path.as_posix().rstrip("/")
+            is_directory = entry.is_dir()
+
             if destination in seen_destinations:
-                reason = "duplicate normalized destination"
+                if seen_destinations[destination] != is_directory:
+                    reason = "file/directory destination collision"
+                else:
+                    reason = "duplicate normalized destination"
+            elif any(
+                parent.as_posix() in seen_files
+                for parent in member_path.parents
+                if parent.as_posix() != "."
+            ):
+                reason = "file/directory path collision"
+            elif not is_directory and destination in required_directories:
+                reason = "file/directory path collision"
             else:
-                seen_destinations.add(destination)
+                reason = ""
+
+            if not reason:
+                seen_destinations[destination] = is_directory
+                if not is_directory:
+                    seen_files.add(destination)
+                required_directories.update(
+                    parent.as_posix()
+                    for parent in member_path.parents
+                    if parent.as_posix() != "."
+                )
                 continue
+
+            if destination not in seen_destinations:
+                seen_destinations[destination] = is_directory
+                if not is_directory:
+                    seen_files.add(destination)
+            required_directories.update(
+                parent.as_posix()
+                for parent in member_path.parents
+                if parent.as_posix() != "."
+            )
 
         issues.append((name, reason))
 
