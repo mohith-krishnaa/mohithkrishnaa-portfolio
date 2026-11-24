@@ -82,7 +82,7 @@ def test_limits_error_examples_without_losing_total_count() -> None:
 
 def test_reports_deeply_nested_json_without_crashing() -> None:
     deeply_nested = "[" * 10_000 + "0" + "]" * 10_000
-    result = run_cli(input_text=deeply_nested + "\\n{\\"ok\\": true}\\n")
+    result = run_cli(input_text=deeply_nested + "\n{\"ok\": true}\n")
     assert result.returncode == 1
     assert "Valid records: 1" in result.stdout
     assert "Invalid lines: 1" in result.stdout
