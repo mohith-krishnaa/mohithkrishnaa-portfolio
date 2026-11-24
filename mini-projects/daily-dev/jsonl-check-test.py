@@ -80,6 +80,17 @@ def test_limits_error_examples_without_losing_total_count() -> None:
     assert "... 2 more" in result.stdout
 
 
+def test_reports_deeply_nested_json_without_crashing() -> None:
+    deeply_nested = "[" * 10_000 + "0" + "]" * 10_000
+    result = run_cli(input_text=deeply_nested + "\\n{\\"ok\\": true}\\n")
+    assert result.returncode == 1
+    assert "Valid records: 1" in result.stdout
+    assert "Invalid lines: 1" in result.stdout
+    assert "line 1:" in result.stdout
+    assert "Traceback" not in result.stderr
+
+
+test_reports_deeply_nested_json_without_crashing()
 test_accepts_json_values_from_stdin()
 test_reports_blank_and_malformed_lines_with_line_numbers()
 test_rejects_non_standard_numeric_constants()
@@ -87,4 +98,4 @@ test_reads_file_and_accepts_missing_final_newline()
 test_rejects_utf8_bom()
 test_reports_unreadable_utf8_file_without_traceback()
 test_limits_error_examples_without_losing_total_count()
-print("jsonl-check.py smoke tests passed (7 tests)")
+print("jsonl-check.py smoke tests passed (8 tests)")
