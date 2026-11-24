@@ -16,7 +16,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `word-counter.py` — count words, characters, and logical lines across LF, CRLF, or CR text.
 - `password-generator.py` — generate passwords with the standard library's secure random generator; rejects lengths below four and returns a nonzero CLI status for invalid input.
 - `json-pretty.py` — format strict JSON from a file or stdin, rejecting non-standard NaN and infinity constants and reporting file/encoding errors cleanly.
-- `jsonl-check.py` — validate JSON Lines/NDJSON one record at a time, reject non-standard numeric constants, and report invalid line numbers without echoing record contents.
+- `jsonl-check.py` — validate JSON Lines/NDJSON one record at a time, reject non-standard numeric constants, and report invalid line numbers without echoing record contents, and handle excessively nested records without crashing.
 - `url-checker.py` — validate HTTP and HTTPS URLs, including host and port syntax, without making network requests; returns exit code `1` if any URL is invalid and `2` when no URLs are supplied.
 - `slugify.py` — convert text into lowercase, hyphen-separated URL slugs.
 - `stats.py` — calculate common descriptive statistics for numeric data, rejecting non-finite values.
@@ -38,7 +38,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 
 - `word-counter-test.py` — checks word and character counts, trailing newlines, LF/CRLF/CR line endings, and stdin behavior.
 - `json-pretty-test.py` — checks sorted Unicode formatting, non-standard numeric constants, missing files, invalid UTF-8, extra arguments, and CLI error handling.
-- `jsonl-check-test.py` — checks JSON values, blank and malformed lines, non-standard constants, UTF-8 BOMs, file errors, stdin, and bounded error examples.
+- `jsonl-check-test.py` — checks JSON values, blank and malformed lines, non-standard constants, UTF-8 BOMs, file errors, stdin, bounded error examples, and deeply nested records.
 - `password-generator-test.py` — checks generated password length and required character classes, minimum-length validation, and CLI success/error exit codes.
 - `slugify-test.py` — checks punctuation and whitespace handling, accent normalization, empty input, and CLI argument/interactive input behavior.
 - `text-stats-test.py` — smoke tests for normal, multiline, and empty text input.
