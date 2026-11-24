@@ -24,7 +24,7 @@ def inspect_jsonl(stream: TextIO) -> tuple[int, int, list[tuple[int, str]]]:
     for line_number, line in enumerate(stream, start=1):
         try:
             json.loads(line, parse_constant=reject_constant)
-        except (json.JSONDecodeError, ValueError) as error:
+        except (json.JSONDecodeError, ValueError, RecursionError) as error:
             invalid_lines += 1
             if len(examples) < SAMPLE_LIMIT:
                 examples.append((line_number, str(error)))
