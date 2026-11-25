@@ -24,7 +24,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `text-stats.py` — report word, line, character, and non-whitespace counts.
 - `percent-change.py` — calculate percentage change between two numeric values, rejecting non-finite inputs.
 - `unique-lines.py` — remove duplicate and blank lines while preserving first-seen order.
-- `bytes.py` — convert byte counts into human-readable binary units.
+- `bytes.py` — convert byte counts into human-readable binary units using integer arithmetic, including values too large for floats.
 - `timestamp.py` — convert Unix timestamps to and from UTC ISO 8601 strings.
 - `iso-date.py` — normalize ISO 8601 date/time input to a consistent UTC representation.
 - `diff.py` — show a compact unified diff between two UTF-8 text files.
@@ -45,7 +45,7 @@ The purpose is simple: make small, real improvements regularly instead of creati
 - `stats-test.py` — checks descriptive statistics, empty-input handling, and rejection of NaN and infinite values.
 - `percent-change-test.py` — checks positive, negative, zero-start, and non-finite input cases.
 - `unique-lines-test.py` — checks duplicate/blank-line removal, order preservation, and CLI stdin behavior.
-- `bytes-test.py` — checks byte conversion, fractional units, and negative-input validation.
+- `bytes-test.py` — checks byte conversion, fractional units, very large integers, and negative-input validation.
 - `temperature-test.py` — checks standard conversions, absolute-zero boundaries, and rejection of non-finite inputs.
 - `timestamp-test.py` — checks Unix/ISO 8601 conversion, timezone offsets, negative fractional timestamps, and rejection of non-finite or out-of-range values.
 - `iso-date-test.py` — checks timezone-aware, UTC, and leap-day ISO 8601 input.

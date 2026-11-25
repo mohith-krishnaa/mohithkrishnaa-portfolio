@@ -6,13 +6,22 @@ def humanize_bytes(value: int) -> str:
         raise ValueError("Byte count cannot be negative")
 
     units = ("B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")
-    size = float(value)
+    if value < 1024:
+        return f"{value} B"
 
-    for index, unit in enumerate(units):
-        # Promote values that would round up to 1024.00 in the current unit.
-        if round(size, 2) < 1024 or index == len(units) - 1:
-            return f"{size:.2f} {unit}" if unit != "B" else f"{int(size)} B"
-        size /= 1024
+    divisor = 1
+    for index, unit in enumerate(units[1:], start=1):
+        divisor *= 1024
+        # Round to hundredths with integer arithmetic to avoid float overflow.
+        hundredths, remainder = divmod(value * 100, divisor)
+        if remainder * 2 > divisor or (
+            remainder * 2 == divisor and hundredths % 2
+        ):
+            hundredths += 1
+
+        if hundredths < 102_400 or index == len(units) - 1:
+            whole, fraction = divmod(hundredths, 100)
+            return f"{whole}.{fraction:02d} {unit}"
 
     raise RuntimeError("Unexpected unit conversion state")
 
