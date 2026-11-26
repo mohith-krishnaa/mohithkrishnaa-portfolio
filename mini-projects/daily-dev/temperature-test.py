@@ -56,4 +56,19 @@ for convert in converters:
                 f"{convert.__name__} should reject non-finite input {value}"
             )
 
+large_fahrenheit_result = module.fahrenheit_to_celsius(1e308)
+assert math.isfinite(large_fahrenheit_result)
+assert math.isclose(
+    large_fahrenheit_result, 1e308 * (5 / 9), rel_tol=1e-15
+)
+
+try:
+    module.celsius_to_fahrenheit(1e308)
+except ValueError:
+    pass
+else:
+    raise AssertionError(
+        "Celsius-to-Fahrenheit conversion should reject an unrepresentable result"
+    )
+
 print("temperature.py smoke tests passed")
