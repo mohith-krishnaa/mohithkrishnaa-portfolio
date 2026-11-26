@@ -12,12 +12,16 @@ def _validate_temperature(value: float, unit: str, absolute_zero: float) -> None
 
 def celsius_to_fahrenheit(celsius: float) -> float:
     _validate_temperature(celsius, "Celsius", -273.15)
-    return (celsius * 9 / 5) + 32
+    result = (celsius * 9 / 5) + 32
+    if not math.isfinite(result):
+        raise ValueError("Converted Fahrenheit value is outside the supported range")
+    return result
 
 
 def fahrenheit_to_celsius(fahrenheit: float) -> float:
     _validate_temperature(fahrenheit, "Fahrenheit", -459.67)
-    return (fahrenheit - 32) * 5 / 9
+    # Divide before multiplying so large finite inputs do not overflow midway.
+    return ((fahrenheit - 32) / 9) * 5
 
 
 def celsius_to_kelvin(celsius: float) -> float:
