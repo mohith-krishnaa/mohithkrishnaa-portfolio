@@ -15,7 +15,7 @@ def percent_change(old: float, new: float) -> float:
     if old == 0:
         raise ValueError("old value must not be zero")
     scale = abs(old)
-    if (old < 0 != new < 0):
+    if (old < 0) != (new < 0):
         # Opposite-sign subtraction can overflow even when the ratio is small.
         relative_change = new / scale - old / scale
     else:
