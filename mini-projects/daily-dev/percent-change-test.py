@@ -30,4 +30,22 @@ for non_finite in (float("nan"), float("inf"), float("-inf")):
         else:
             raise AssertionError("non-finite values should raise ValueError")
 
+def test_extreme_opposite_sign_values_avoid_intermediate_overflow() -> None:
+    assert module.percent_change(-1e308, 1e308) == 200.0
+    assert module.percent_change(1e308, -1e308) == -200.0
+    assert module.percent_change(1e308, 1e308) == 0.0
+
+
+def test_unrepresentable_percentage_is_rejected() -> None:
+    for old, new in ((1e-308, 1e308), (1e-308, -1e308)):
+        try:
+            module.percent_change(old, new)
+        except ValueError as exc:
+            assert str(exc) == "percentage change is outside the supported float range"
+        else:
+            raise AssertionError("unrepresentable result should raise ValueError")
+
+
+test_extreme_opposite_sign_values_avoid_intermediate_overflow()
+test_unrepresentable_percentage_is_rejected()
 print("percent-change tests passed")
